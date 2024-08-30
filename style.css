@@ -91,6 +91,7 @@ body {
     padding: .5rem;
     background-color: var(--c1);
     color: var(--c2);
+    opacity: 0;
     border-radius: 1rem;
     animation: jump 2s;
 }
@@ -111,11 +112,14 @@ body {
 @keyframes jump {
     0% {
         top: -4rem;
+        opacity: 1;
     } 20% {
         top: 2rem;
     } 80% {
         top: 2rem;
+        opacity: 1;
     } 100% {
         top: -4rem;
+        opacity: 0;
     }
 }
