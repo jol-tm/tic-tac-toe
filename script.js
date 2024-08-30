@@ -49,61 +49,62 @@ function setPos(line, col, block) {
         turns++;
         if (!verifyGameOver()) {
             player == "O" ? player = "X" : player = "O";
-            showPopUp(`Vez do "${player}"`);
+            showPopUp(`Vez do "${player}"`, 2);
         } else {
             gameOver = true;
         }
     } else {
-        showPopUp("Posição já ocupada!");
+        showPopUp("Posição já ocupada!", 2);
     }
 }
 
-function showPopUp(message) {
+function showPopUp(message, duration) {
     $(".popup").remove();
     $("body").append(`<div class="popup">${message}</div>`)
+    $(".popup").css("animation-duration", `${duration}s`);
 }
 
-function paintLine(id1, id2, id3) {
-    $("#" + id1).css("color", "var(--c1)");
-    $("#" + id2).css("color", "var(--c1)");
-    $("#" + id3).css("color", "var(--c1)");
+function paintLine(block1, block2, block3) {
+    $("#" + block1).css("color", "var(--c1)");
+    $("#" + block2).css("color", "var(--c1)");
+    $("#" + block3).css("color", "var(--c1)");
 }
 
 function verifyGameOver() {
     if (positions[0][0] == player && positions[1][1] == player && positions[2][2] == player) {
-        showPopUp(`Vitória do ${player} na diagonal!`);
+        showPopUp(`Vitória do ${player} na diagonal!`, 5);
         paintLine("00", "11", "22");
         return true;
     } else if (positions[0][2] == player && positions[1][1] == player && positions[2][0] == player) {
-        showPopUp(`Vitória do ${player} na diagonal!`);
+        showPopUp(`Vitória do ${player} na diagonal!`, 5);
         paintLine("02", "11", "20");
         return true;
     } else if (positions[0][0] == player && positions[0][1] == player && positions[0][2] == player) {
-        showPopUp(`Vitória do ${player} com uma linha horizontal na 1º linha!`);
+        showPopUp(`Vitória do ${player} com uma linha horizontal na 1º linha!`, 5);
         paintLine("00", "01", "02");
         return true;
     } else if (positions[1][0] == player && positions[1][1] == player && positions[1][2] == player) {
-        showPopUp(`Vitória do ${player} com uma linha horizontal na 2º linha!`);
+        showPopUp(`Vitória do ${player} com uma linha horizontal na 2º linha!`, 5);
         paintLine("10", "11", "12");
         return true; 
     } else if (positions[2][0] == player && positions[2][1] == player && positions[2][2] == player) {
-        showPopUp(`Vitória do ${player} com uma linha horizontal na 3º linha!`);
+        showPopUp(`Vitória do ${player} com uma linha horizontal na 3º linha!`, 5);
         paintLine("20", "21", "22");
         return true;
     } else if (positions[0][0] == player && positions[1][0] == player && positions[2][0] == player) {
-        showPopUp(`Vitória do ${player} com uma linha vertical na 1º coluna!`);
+        showPopUp(`Vitória do ${player} com uma linha vertical na 1º coluna!`, 5);
         paintLine("00", "10", "20");
         return true;
     } else if (positions[0][1] == player && positions[1][1] == player && positions[2][1] == player) {
-        showPopUp(`Vitória do ${player} com uma linha vertical na 2º coluna!`);
+        showPopUp(`Vitória do ${player} com uma linha vertical na 2º coluna!`, 5);
         paintLine("01", "11", "21");
         return true;
     } else if (positions[0][2] == player && positions[1][2] == player && positions[2][2] == player) {
-        showPopUp(`Vitória do ${player} com uma linha vertical na 3º coluna!`);
+        showPopUp(`Vitória do ${player} com uma linha vertical na 3º coluna!`, 5);
         paintLine("02", "12", "22");
         return true; 
     } else if (turns >= 9){
-        showPopUp("Empate!");
+        showPopUp("Empate!", 5);
         return true;
     } else {
         return false;

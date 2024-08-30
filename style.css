@@ -93,7 +93,7 @@ body {
     color: var(--c2);
     opacity: 0;
     border-radius: 1rem;
-    animation: jump 2s;
+    animation: jump;
 }
 
 .anim {
