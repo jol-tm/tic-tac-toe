@@ -11,10 +11,16 @@
     #gameBox {
         scale: .6;
     }
+    .popup {
+        max-width: 20rem;
+    }
 }
 @media only screen and (min-width : 992px) {
     #gameBox {
         scale: 1;
+    }
+    .popup {
+        max-width: fit-content;
     }
 }
 
@@ -37,7 +43,7 @@ body {
 }
 
 #restartBtn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: var(--c1);
     color: var(--c2);
     text-decoration: none;
@@ -46,7 +52,7 @@ body {
     transition: .1s;
 }
 #restartBtn:hover {
-   transform: translateY(-3px);
+    transform: translateY(-3px);
 }
 
 #gameBox {
@@ -86,7 +92,7 @@ body {
 .popup {
     position: fixed;
     top: -4rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     padding: .5rem;
     background-color: var(--c1);
